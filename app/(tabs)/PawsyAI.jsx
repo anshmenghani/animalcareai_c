@@ -15,6 +15,7 @@ import { FontAwesome } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
 import FlashMessage, { showMessage } from "react-native-flash-message";
 import { StatusBar } from 'expo-status-bar';
+import MathView from 'react-native-math-view'; // Import MathView
 import { GEMINI_API_KEY } from '@env';
 
 const AnimalCareAI = () => {
@@ -145,25 +146,36 @@ const AnimalCareAI = () => {
     setIsSpeaking(false);
   };
 
-  const renderMessage = ({ item }) => (
-    <View
-      className={`p-3 my-1 rounded-lg shadow-sm ${
-        item.user ? "bg-[#f1fcfa] self-end max-w-[80%]" : "self-start max-w-[81%]"
-      } flex-row items-start`}
-    >
-      {!item.user && (
-        <Image
-          source={require("../../assets/images/icon.png")} // Path to your AI avatar image
-          className="w-8 h-8 rounded-full mr-3 ml-[-10]"
-        />
-      )}
-      <Text
-        className={`${item.user ? "text-[#08282b]" : "text-[#08282b]"} text-lg`}
+  const renderMessage = ({ item }) => {
+    const isLatex = item.text.includes('$'); // Check if the message contains LaTeX syntax
+
+    return (
+      <View
+        className={`p-3 my-1 rounded-lg shadow-sm ${
+          item.user ? "bg-[#f1fcfa] self-end max-w-[80%]" : "self-start max-w-[81%]"
+        } flex-row items-start`}
       >
-        {item.text}
-      </Text>
-    </View>
-  );
+        {!item.user && (
+          <Image
+            source={require("../../assets/images/animalcare-logo.png")} 
+            className="w-8 h-8 rounded-full mr-3 ml-[-10]"
+          />
+        )}
+        {isLatex ? (
+          <MathView
+            math={item.text}  // Render LaTeX content
+            style={{ color: item.user ? "#08282b" : "#08282b", fontSize: 18 }}
+          />
+        ) : (
+          <Text
+            className={`${item.user ? "text-[#08282b]" : "text-[#08282b]"} text-lg`}
+          >
+            {item.text}
+          </Text>
+        )}
+      </View>
+    );
+  };
 
   return (
     <View className="flex-1 bg-gradient-to-r from-green-500 via-blue-500 to-indigo-500 p-4 bg-[#d1f6f2]">

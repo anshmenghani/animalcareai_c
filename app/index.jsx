@@ -1,48 +1,26 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import { View, Text, ScrollView, Dimensions } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { router } from 'expo-router';
 import CustomButton from '../components/CustomButton';
 import * as Animatable from 'react-native-animatable';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const { width: screenWidth, height: screenHeight } = Dimensions.get('window');
 
 const OnboardingScreen = () => {
   const [currentPage, setCurrentPage] = useState(0);
   const scrollViewRef = useRef(null);
-  const [isOnboardingCompleted, setIsOnboardingCompleted] = useState(false);
-
   const totalPages = 3;
-
-  useEffect(() => {
-    // Check if onboarding has already been completed
-    const checkOnboardingStatus = async () => {
-      const completed = await AsyncStorage.getItem('onboardingCompleted');
-      if (completed === 'true') {
-        // If completed, skip onboarding and replace the stack with the home screen
-        router.replace('/Home');
-      }
-    };
-
-    checkOnboardingStatus();
-  }, []);
 
   const handleScroll = (event) => {
     const pageIndex = Math.floor(event.nativeEvent.contentOffset.x / screenWidth);
     setCurrentPage(pageIndex);
   };
 
-  const handleContinue = async () => {
-    // Save that the user has seen the onboarding screen
-    await AsyncStorage.setItem('onboardingCompleted', 'true');
-    setIsOnboardingCompleted(true);
-    router.replace('/Home'); // Replace stack to prevent navigating back to onboarding
+  const handleContinue = () => {
+    // Replace stack to navigate to the home screen
+    router.replace('/Home');
   };
-
-  if (isOnboardingCompleted) {
-    return null; // Don't render anything if onboarding is done
-  }
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#d1f6f2' }}>
@@ -92,7 +70,7 @@ const OnboardingScreen = () => {
         <View style={{ width: screenWidth, justifyContent: 'center', alignItems: 'center', padding: 16 }}>
           <Animatable.Image
             animation="fadeInUp"
-            source={require('/Users/lucky/Desktop/repos/animalcareai/assets/images/cards.png')} // Replace with your image path
+            source={require('/Users/lucky/Desktop/repos/animalcareai/assets/images/animalcare-logo.png')} // Replace with your image path
             style={{ width: 250, height: 250, marginBottom: 20 }}
             resizeMode="contain"
           />

@@ -20,8 +20,8 @@ const Home = () => {
           <Animatable.Image
             animation="fadeIn"
             easing="ease-out"
-            source={require('/Users/lucky/Desktop/repos/animalcareai/assets/images/animalcare-logo.png')} // Replace with your logo
-            style={{ width: 300, height: 300,  marginTop: 15 }}
+            source={require('/Users/lucky/Desktop/repos/animalcareai/assets/images/animalcare-logo.png')} 
+            style={{ width: 400, height: 400}}
             resizeMode="contain"
           />
         </View>
@@ -31,7 +31,7 @@ const Home = () => {
           <Text className="text-lg font-bold text-gray-800 mb-2">Latest Diagnosis/Advice</Text>
           <View className="bg-white p-4 rounded-lg shadow-md" style={{ height: 70 }}>
             <Text className="text-gray-600" numberOfLines={1} ellipsizeMode="tail">
-              Placeholder diagnosis text goes here, and it will cut off if too long...
+              
             </Text>
           </View>
         </Animatable.View>
@@ -41,7 +41,7 @@ const Home = () => {
           <Text className="text-lg font-bold text-gray-800 mb-2">Recent Activity/Chats with PawsyAI</Text>
           <View className="bg-white p-4 rounded-lg shadow-md" style={{ height: 70 }}>
             <Text className="text-gray-600" numberOfLines={1} ellipsizeMode="tail">
-              Placeholder activity/chat details go here, and it will cut off if too long...
+              
             </Text>
           </View>
         </Animatable.View>
@@ -85,10 +85,10 @@ const Home = () => {
             {/* Larger Latest Diagnosis/Advice Box in Modal */}
             <View className="mb-8">
               <Text className="text-md text-gray-800 mb-2">Latest Diagnosis/Advice</Text>
-              <View className="bg-gray-100 p-4 rounded-lg shadow-md" style={{ maxHeight: 150 }}>
+              <View className="bg-white p-4 rounded-lg shadow-md" style={{ maxHeight: 150 }}>
                 <ScrollView>
                   <Text className="text-gray-600">
-                    Placeholder diagnosis text goes here in the modal. Scroll for more information...
+                    
                   </Text>
                 </ScrollView>
               </View>
@@ -97,10 +97,10 @@ const Home = () => {
             {/* Larger Recent Activity/Chats Box in Modal */}
             <View>
               <Text className="text-md text-gray-800 mb-2">Recent Activity/Chats with PawsyAI</Text>
-              <View className="bg-gray-100 p-4 rounded-lg shadow-md" style={{ maxHeight: 150 }}>
+              <View className="bg-white p-4 rounded-lg shadow-md" style={{ maxHeight: 150 }}>
                 <ScrollView>
                   <Text className="text-gray-600">
-                    Placeholder activity/chat details go here in the modal. Scroll for more information...
+                    
                   </Text>
                 </ScrollView>
               </View>
