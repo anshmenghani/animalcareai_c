@@ -1,8 +1,8 @@
 import { View, Text } from 'react-native';
 import { Tabs } from 'expo-router';
-import { icons } from '../../constants/icons'; // Adjust the path as necessary
+import { icons } from '../../constants/icons'; 
 import React from 'react';
-import * as Haptics from 'expo-haptics'; // Import Haptics
+import * as Haptics from 'expo-haptics'; 
 
 // TabIcon component to display icons with text
 const TabIcon = ({ icon: IconComponent, color, name, focused }) => {
@@ -30,7 +30,7 @@ const TabsLayout = () => {
       <Tabs
         screenOptions={{
           tabBarShowLabel: false,
-          tabBarActiveTintColor: '#40c4c1',
+          tabBarActiveTintColor: '#6cdcd6',
           tabBarInactiveTintColor: '#CDCDE0',
           tabBarStyle: {
             backgroundColor: '#161622',
@@ -71,21 +71,6 @@ const TabsLayout = () => {
           }}
         />
         <Tabs.Screen
-          name="Symptoms"
-          options={{
-            title: 'Symptoms',
-            headerShown: false,
-            tabBarIcon: ({ color, focused }) => (
-              <TabIcon
-                icon={icons.symptoms}
-                color={color}
-                name="Symptoms"
-                focused={focused}
-              />
-            ),
-          }}
-        />
-        <Tabs.Screen
           name="PawsyAI"
           options={{
             title: 'PawsyAI',
@@ -95,21 +80,6 @@ const TabsLayout = () => {
                 icon={icons.pawsyAI}
                 color={color}
                 name="PawsyAI"
-                focused={focused}
-              />
-            ),
-          }}
-        />
-        <Tabs.Screen
-          name="Test" // Ensure this name matches your folder structure
-          options={{
-            title: 'Test',
-            headerShown: false,
-            tabBarIcon: ({ color, focused }) => (
-              <TabIcon
-                icon={icons.testIcon || icons.pawsyAI} // Use a valid icon here, or fallback to an existing one
-                color={color}
-                name="Test"
                 focused={focused}
               />
             ),
