@@ -19,6 +19,10 @@ const models = [
   {
     name: "Mouth",
     url: "https://teachablemachine.withgoogle.com/models/SlnZaYHKt/"
+  },
+  {
+    name: "Ears", // New model for ears
+    url: "https://teachablemachine.withgoogle.com/models/dO9qW6SBy/" // Ears model URL
   }
 ];
 
@@ -26,8 +30,8 @@ export default function App() {
   const [facing, setFacing] = useState('back');
   const [permission, requestPermission] = useCameraPermissions();
   const [prediction, setPrediction] = useState(null);
-  const [currentModelIndex, setCurrentModelIndex] = useState(1); // Start with Skin model
-  const [modalVisible, setModalVisible] = useState(false); // State for model selection modal
+  const [currentModelIndex, setCurrentModelIndex] = useState(3); // Start with Ears model
+  const [modalVisible, setModalVisible] = useState(false);
   const ref = useRef(null);
 
   if (!permission) {
@@ -287,13 +291,13 @@ const styles = StyleSheet.create({
   modalTitle: {
     fontSize: 34,
     color: 'black',
-    marginBottom: 60, // Adjusted margin
+    marginBottom: 20, // Adjusted margin
     textAlign: 'center',
     fontWeight: 'bold',
   },
   modelOption: {
     paddingVertical: 15,
-    marginBottom: 30, // Increased spacing between options
+    marginBottom: 20, // Increased spacing between options
     // Removed borderBottomWidth for a cleaner look
     backgroundColor: '#40c4c1',
     borderRadius: 12,
@@ -306,13 +310,14 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   closeModalButton: {
-    marginTop: 20,
+    marginTop: 1,
     backgroundColor: '#40c4c1',
     borderRadius: 30,
     paddingVertical: 12,
     paddingHorizontal: 24,
     alignSelf: 'center',
     elevation: 4,
+    marginBottom: 10,
   },
   closeModalText: {
     color: 'black', // Changed to black for better visibility
